@@ -19,7 +19,7 @@ Call FlujoWIC()
 Call ActualizarAtributos()
 Call ResumenOrden()
 If DataTable("e_Ambiente", "Login")<>"PROD" Then
-	Call EmpujeOrden()
+	'Call EmpujeOrden()
 End If
 Call BuscarOrden()
 Call DetalleActividadOrden()
@@ -215,6 +215,7 @@ Sub FlujoWIC()
 
 	If DataTable("e_WIC_ValidaCli", dtLocalsheet)="SI" Then
 		
+
 RunAction "WIC", oneIteration
 
 	End If
@@ -552,7 +553,7 @@ Sub EmpujeOrden()
 		JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Buscar: Grupo de órdenes").JavaTable("Equipo usuario:").SelectRow "#0"	
 		wait 2
 		JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Buscar: Grupo de órdenes").JavaButton("Gestión manual").Click
-		
+		wait 1
 			While(	JavaWindow("Ejecutivo de interacción").JavaDialog("Buscar: Grupo de órdenes").JavaList("Estado de la gestión manual:").Exist)=False
 				wait 1
 			Wend
@@ -564,7 +565,7 @@ Sub EmpujeOrden()
 		JavaWindow("Ejecutivo de interacción").CaptureBitmap RutaEvidencias() &Num_Iter&"_"&"GestionManual.png", True
 		imagenToWord "-Estado de la gestión manual- de manera correcta"&Num_Iter,RutaEvidencias() &Num_Iter&"_"&"GestionManual.png"
 		JavaWindow("Ejecutivo de interacción").JavaDialog("Buscar: Grupo de órdenes").JavaButton("Enviar").Click
-	
+		wait 1
 			While (JavaWindow("Ejecutivo de interacción").JavaDialog("Buscar: Grupo de órdenes").Exist) = False
 				wait 1	
 			Wend

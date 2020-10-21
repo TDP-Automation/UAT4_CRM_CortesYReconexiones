@@ -199,12 +199,13 @@ Sub ActualizarAtributos()
 	
 	wait 2
 	JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Actualizar Atributos de").JavaList("Motivo:").Select str_Motivo
+	wait 3
 	While JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Actualizar Atributos de").JavaList("Equipo").Exist=False
 		wait 1
 	Wend
-	wait 3
+	wait 5
 	JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Actualizar Atributos de").JavaList("Equipo").Select DataTable("e_Equipo",dtLocalSheet)
-	wait 2
+	wait 4
 	JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Actualizar Atributos de").JavaEdit("Texto del motivo:").SetFocus
 	JavaWindow("Ejecutivo de interacción").JavaInternalFrame("Actualizar Atributos de").JavaEdit("Texto del motivo:").Set str_TextoMotivo
 	wait 2
